@@ -1,0 +1,36 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class RepeatedDigits {
+    public static void main(String[] args) {
+        int number = 122334455;  // Example number
+        printRepeatedDigits(number);
+    }
+
+    public static void printRepeatedDigits(int number) {
+        // Frequency array to store count of each digit (0-9)
+        int[] digitCount = new int[10];
+
+        // Count the frequency of each digit
+        while (number > 0) {
+            int digit = number % 10;
+            digitCount[digit]++;
+            number /= 10;
+        }
+
+        System.out.println("Repeated digits:");
+
+        // Check which digits have a count greater than 1 (repeated)
+        boolean hasRepeatedDigits = false;
+        for (int i = 0; i < 10; i++) {
+            if (digitCount[i] > 1) {
+                System.out.println(i);
+                hasRepeatedDigits = true;
+            }
+        }
+
+        if (!hasRepeatedDigits) {
+            System.out.println("No repeated digits.");
+        }
+    }
+}
